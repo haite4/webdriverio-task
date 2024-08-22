@@ -53,7 +53,7 @@ export const config = {
         // capabilities for local browser web tests
         browserName: 'firefox',
         'moz:firefoxOptions': {
-            // args: ['-headless']
+            args: ['-headless']
         }
          // or "firefox", "microsoftedge", "safari"
     }],
