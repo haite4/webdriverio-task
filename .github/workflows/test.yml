@@ -14,7 +14,7 @@ jobs:
         - name: Install
           run: npm ci
         - name: Run test
-          run: npm run wdio:cart
+          run: npm run wdio
         - uses: actions/upload-artifact@v4
           if: always()
           with:
