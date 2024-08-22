@@ -1,0 +1,7 @@
+{
+  "base": "https://www.saucedemo.com",
+  "inventory": "/inventory.html",
+  "checkout_step_one": "/checkout-step-one.html",
+  "cart": "/cart.html",
+  "checkout_step_two": "/checkout-step-two.html"
+}
