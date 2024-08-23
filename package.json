@@ -4,7 +4,8 @@
     "wdio:inventory": "wdio run wdio.conf.js --spec test/specs/inventory.e2e.js",
     "wdio:login": "wdio run wdio.conf.js --spec test/specs/login.e2e.js",
     "wdio:cart": "wdio run wdio.conf.js --spec test/specs/cart.e2e.js",
-    "wdio:checkout:step:one": "wdio run wdio.conf.js --spec test/specs/checkout-step-one.e2e.js"
+    "wdio:checkout:step:one": "wdio run wdio.conf.js --spec test/specs/checkout-step-one.e2e.js",
+    "allure:generate": "npx allure generate allure-results --clean"
   },
   "name": "webdriverio-task",
   "type": "module",

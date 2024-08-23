@@ -15,8 +15,21 @@ jobs:
           run: npm ci
         - name: Run test
           run: npm run wdio
-        - uses: actions/upload-artifact@v4
+      
+        - name: Create report
+          if: always()
+          run: npm run allure:generate
+        - name: Upload artifact allure-report
+          uses: actions/upload-artifact@v4
           if: always()
           with:
-            name: logs
-            path: logs
+            name: allure-report
+            path: ./allure-report
+
+        - name: Publish test report
+          uses: peaceiris/actions-gh-pages@v3
+          if: always()
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_branch: gh-pages
+            publish_dir: allure-report
