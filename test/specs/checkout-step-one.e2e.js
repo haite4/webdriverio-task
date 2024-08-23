@@ -6,7 +6,7 @@ import endpoints from "../../fixtures/endpoints.json";
 
 describe("Checkout page testing", () => {
   beforeEach(async () => {
-    await loginPage.open();
+    loginPage.open();
     await loginPage.login(valid_creds.username, valid_creds.password);
     checkoutStepsOnePage.navigateToCheckoutStepOne();
   });
@@ -41,7 +41,7 @@ describe("Checkout page testing", () => {
     await expect(checkoutStepsOnePage.continueBtn).toBeDisplayed();
     await expect(continueBtnValue).toEqual("Continue");
 
-    const title = await checkoutStepsOnePage.title;
+    const title = checkoutStepsOnePage.title;
     await expect(title).toBeDisplayed();
     await expect(title).toHaveText("Checkout: Your Information");
   });
@@ -61,7 +61,7 @@ describe("Checkout page testing", () => {
   it("should display an error message when submitting an empty checkout form", async () => {
     await checkoutStepsOnePage.fillCheckoutForm("", "", "");
     checkoutStepsOnePage.clickContinueBtn();
-    const errorMessage = await checkoutStepsOnePage.errorMessage;
+    const errorMessage = checkoutStepsOnePage.errorMessage;
     const erroMessageColor = await errorMessage.getCSSProperty(
       "background-color"
     );
@@ -73,24 +73,15 @@ describe("Checkout page testing", () => {
   it("should navigate to the correct page when the Continue button is clicked", async () => {
     await checkoutStepsOnePage.fillCheckoutForm(firstname, lastname, zipcode);
     checkoutStepsOnePage.clickContinueBtn();
-    await browser.waitUntil(
-      async () =>
-        (await browser.getUrl()).includes(endpoints.checkout_step_two),
-      { timeout: 2000 }
-    );
-
+   
     await expect(browser).toHaveUrl(
       `${endpoints.base}${endpoints.checkout_step_two}`
     );
+   
   });
 
   it("should navigate to the correct page when the Cancel button is clicked", async () => {
     checkoutStepsOnePage.clickCancelBtn();
-    await browser.waitUntil(
-      async () => (await browser.getUrl()).includes(endpoints.cart),
-      { timeout: 2000 }
-    );
-
     await expect(browser).toHaveUrl(`${endpoints.base}${endpoints.cart}`);
   });
 });

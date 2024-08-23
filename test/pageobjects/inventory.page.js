@@ -2,7 +2,7 @@ import Page from "./page";
 
 class InventoryPage extends Page {
   get inventoryTitle() {
-    return $(".title");
+    return $("span.title");
   }
 
   get allProductName() {

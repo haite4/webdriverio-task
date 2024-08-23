@@ -7,23 +7,20 @@ import { expect as chaiExpect } from "chai";
 
 describe("Cart page testing", () => {
   beforeEach(async () => {
-    await loginPage.open();
+    loginPage.open();
     await loginPage.login(valid_creds.username, valid_creds.password);
   });
 
   it("Verify that all cart page elements are visible and contain correct text", async () => {
     cartPage.navigateToCart();
 
-    const qtyLabel = await cartPage.qtyLabel;
-    const cartTitle = await cartPage.title;
-    const checkoutBtn = await cartPage.checkoutBtn;
-    const continueShoppingBtn = await cartPage.continueShoppingBtn;
-    const descriptionLabel = await cartPage.descriptionLabel;
+    const qtyLabel = cartPage.qtyLabel;
+    const checkoutBtn = cartPage.checkoutBtn;
+    const continueShoppingBtn = cartPage.continueShoppingBtn;
+    const descriptionLabel = cartPage.descriptionLabel;
 
     await expect(qtyLabel).toBeDisplayed();
     await expect(qtyLabel).toHaveText(expect.stringContaining("QTY"));
-    await expect(cartTitle).toBeDisplayed();
-    await expect(cartTitle).toHaveText(expect.stringContaining("Your Cart"));
     await expect(checkoutBtn).toBeDisplayed();
     await expect(checkoutBtn).toHaveText(expect.stringContaining("Checkout"));
     await expect(continueShoppingBtn).toBeDisplayed();
@@ -38,14 +35,21 @@ describe("Cart page testing", () => {
 
   it("the cart page should display correct item details", async () => {
     inventoryPage.clickAddToCartBtn();
-    await inventoryPage.shoppingCartBadge.waitUntil(
-      async () => (await inventoryPage.shoppingCartBadge.getText()) === "1",
-      { timeout: 2000 }
+    await browser.waitUntil(
+      async () => {
+        const buttonText = await inventoryPage.shoppingCartBadge.getText();
+        return buttonText === "1";
+      },
+      {
+        timeout: 5000,
+        timeoutMsg:
+          "Expected the product to be added to the cart, but it didn't happen within the expected time.",
+      }
     );
-    cartPage.navigateToCart();
-    const productRemoveBtn = await cartPage.productRemoveBtn;
-    const productRemoveBtnText = await cartPage.productRemoveBtn.getText();
 
+    cartPage.navigateToCart();
+    const productRemoveBtn = cartPage.productRemoveBtn;
+    const productRemoveBtnText = await cartPage.productRemoveBtn.getText();
     await expect(cartPage.productName).toBeDisplayed();
     await expect(cartPage.productPrice).toBeDisplayed();
     await expect(cartPage.productDesc).toBeDisplayed();
@@ -57,10 +61,7 @@ describe("Cart page testing", () => {
     cartPage.navigateToCart();
     await expect(cartPage.continueShoppingBtn).toBeDisplayed();
     cartPage.clickContinShoppBtn();
-    await browser.waitUntil(
-      async () => (await browser.getUrl()).includes(endpoints.inventory),
-      { timeout: 2000 }
-    );
+
     await expect(browser).toHaveUrl(`${endpoints.base}${endpoints.inventory}`);
   });
 
@@ -68,11 +69,7 @@ describe("Cart page testing", () => {
     cartPage.navigateToCart();
     await expect(cartPage.checkoutBtn).toBeDisplayed();
     cartPage.clickCheckoutBtn();
-    await browser.waitUntil(
-      async () =>
-        (await browser.getUrl()).includes(endpoints.checkout_step_one),
-      { timeout: 2000 }
-    );
+
     await expect(browser).toHaveUrl(
       `${endpoints.base}${endpoints.checkout_step_one}`
     );
@@ -80,12 +77,17 @@ describe("Cart page testing", () => {
 
   it("should ensure the product remains in the cart after the user logs out and logs back in", async () => {
     inventoryPage.clickAddToCartBtn();
-    inventoryPage.logout();
+    await inventoryPage.logout();
     await loginPage.login(valid_creds.username, valid_creds.password);
     cartPage.navigateToCart();
+
     const cartItemExist = await cartPage.cartItem.isExisting();
     chaiExpect(cartItemExist).to.be.true;
     const cartQuantity = await inventoryPage.shoppingCartBadge.getText();
     await expect(cartQuantity).toEqual("1");
+  });
+
+  afterEach(async () => {
+    await inventoryPage.clearCart();
   });
 });

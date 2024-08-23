@@ -11,9 +11,9 @@ export default class Page {
     return $("#logout_sidebar_link");
   }
 
-  logout() {
-    this.burgerBtn.click();
-    this.logoutLink.click();
+  async logout() {
+    await this.burgerBtn.click();
+    await this.logoutLink.click();
   }
 
   open(path) {
@@ -21,6 +21,6 @@ export default class Page {
   }
 
   navigateTo(path) {
-    browser.navigateTo(`${browser.options.baseUrl}${path}`);
+    return browser.navigateTo(`${browser.options.baseUrl}${path}`);
   }
 }

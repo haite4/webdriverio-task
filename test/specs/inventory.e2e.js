@@ -5,7 +5,7 @@ import { expect as chaiExpect } from "chai";
 
 describe("Inventory page testing", () => {
   beforeEach(async () => {
-    await loginPage.open();
+    loginPage.open();
     await loginPage.login(valid_creds.username, valid_creds.password);
   });
 
@@ -30,7 +30,7 @@ describe("Inventory page testing", () => {
 
   it("Verify button changes and cart quantity updates after adding a product", async () => {
     inventoryPage.clickAddToCartBtn();
-    const shoppingCartBadge = await inventoryPage.shoppingCartBadge;
+    const shoppingCartBadge = inventoryPage.shoppingCartBadge;
     const cartQuantity = await shoppingCartBadge.getText();
     const btnText = await inventoryPage.addToCartBtn.getText();
     await expect(shoppingCartBadge).toBeDisplayed();
@@ -47,7 +47,7 @@ describe("Inventory page testing", () => {
   });
 
   it("filter products from (low to high) price", async () => {
-    const selectBox = await inventoryPage.productSortContainer;
+    const selectBox = inventoryPage.productSortContainer;
     await selectBox.selectByAttribute("value", "lohi");
     const prices = [];
 
@@ -62,7 +62,7 @@ describe("Inventory page testing", () => {
   });
 
   it("filter products from (high to low)  price", async () => {
-    const selectBox = await inventoryPage.productSortContainer;
+    const selectBox = inventoryPage.productSortContainer;
     await selectBox.selectByAttribute("value", "hilo");
     const prices = [];
     for await (const el of inventoryPage.allProductPrice) {
@@ -75,7 +75,7 @@ describe("Inventory page testing", () => {
   });
 
   it("Filter products alphabetically by name (A to Z)", async () => {
-    const selectBox = await inventoryPage.productSortContainer;
+    const selectBox = inventoryPage.productSortContainer;
     await selectBox.selectByAttribute("value", "az");
     const names = [];
     for await (const el of inventoryPage.allProductName) {
@@ -87,7 +87,7 @@ describe("Inventory page testing", () => {
   });
 
   it("Filter products alphabetically by name (Z to A)", async () => {
-    const selectBox = await inventoryPage.productSortContainer;
+    const selectBox = inventoryPage.productSortContainer;
     await selectBox.selectByAttribute("value", "za");
     const names = [];
     for await (const el of inventoryPage.allProductName) {

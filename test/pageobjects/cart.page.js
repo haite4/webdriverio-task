@@ -1,64 +1,54 @@
-import Page from "./page"
-import endpoints from "../../fixtures/endpoints.json"
-
+import Page from "./page";
+import endpoints from "../../fixtures/endpoints.json";
 
 class CartPage extends Page {
-    get title(){
-        return $("span.title")
-    }
+  get qtyLabel() {
+    return $(".cart_quantity_label");
+  }
 
-    get qtyLabel(){
-        return $(".cart_quantity_label")
-    }
+  get descriptionLabel() {
+    return $(".cart_desc_label");
+  }
 
-    get descriptionLabel(){
-        return $(".cart_desc_label")
-    }
+  get checkoutBtn() {
+    return $("#checkout");
+  }
 
-    get checkoutBtn(){
-        return $("#checkout")
-    }
+  get continueShoppingBtn() {
+    return $("#continue-shopping");
+  }
 
-    get continueShoppingBtn(){
-        return $("#continue-shopping")
-    }
+  get productName() {
+    return $(".inventory_item_name");
+  }
 
-    get productName(){
-        return $(".inventory_item_name")
-    }
+  get productDesc() {
+    return $(".inventory_item_desc");
+  }
 
-    get productDesc(){
-        return $(".inventory_item_desc")
-    }
+  get productPrice() {
+    return $(".inventory_item_price");
+  }
 
-    get productPrice(){
-        return $(".inventory_item_price")
-    }
+  get productRemoveBtn() {
+    return $(".cart_button");
+  }
 
-    get productRemoveBtn(){
-        return $(".cart_button")
-    }
+  get cartItem() {
+    return $(".cart_item");
+  }
 
-    get cartItem(){
-        return $(".cart_item")
-    }
+  clickContinShoppBtn() {
+    this.continueShoppingBtn.click();
+  }
 
-    clickContinShoppBtn(){
-        this.continueShoppingBtn.click()
-    }
+  clickCheckoutBtn() {
+    this.checkoutBtn.click();
+  }
 
-    clickCheckoutBtn(){
-        this.checkoutBtn.click()
-    }
-   
-
-     navigateToCart(){
-        return super.navigateTo(endpoints.cart)
-
-    }
+  navigateToCart() {
+    return super.navigateTo(endpoints.cart);
+  }
 }
 
-
-
-
-export default new CartPage()
+export default new CartPage();

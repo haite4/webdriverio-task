@@ -6,7 +6,7 @@ import { faker } from "@faker-js/faker";
 
 describe("Login page testing", () => {
   beforeEach(async () => {
-    await loginPage.open();
+    loginPage.open();
   });
 
   it("Verify all needs elements are visible", async () => {
@@ -16,7 +16,6 @@ describe("Login page testing", () => {
       loginPage.btnSubmit,
       loginPage.loginLogo,
     ];
-
     for (let i = 0; i < webpageElements.length; i++) {
       await expect(webpageElements[i]).toBeDisplayed();
     }
