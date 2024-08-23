@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": ".cart_desc_label"
-}
