@@ -2,6 +2,7 @@ import Page from "./page";
 import endpoints from "../../fixtures/endpoints.json";
 
 class CartPage extends Page {
+    
   get qtyLabel() {
     return $(".cart_quantity_label");
   }

@@ -73,11 +73,10 @@ describe("Checkout page testing", () => {
   it("should navigate to the correct page when the Continue button is clicked", async () => {
     await checkoutStepsOnePage.fillCheckoutForm(firstname, lastname, zipcode);
     checkoutStepsOnePage.clickContinueBtn();
-   
+
     await expect(browser).toHaveUrl(
       `${endpoints.base}${endpoints.checkout_step_two}`
     );
-   
   });
 
   it("should navigate to the correct page when the Cancel button is clicked", async () => {

@@ -1,6 +1,7 @@
 import Page from "./page";
 
 class InventoryPage extends Page {
+  
   get inventoryTitle() {
     return $("span.title");
   }

@@ -1,4 +1,4 @@
-export const config = {
+exports.config = {
     //
     // ====================
     // Runner Configuration
@@ -21,7 +21,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.js'
+        '../test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -50,14 +50,15 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local browser web tests
-        browserName: 'firefox',
-        'moz:firefoxOptions': {
-            args: ['-headless']
-        }
-         // or "firefox", "microsoftedge", "safari"
-    }],
-
+      maxInstances: 2,
+      browserName: 'chrome',
+      acceptInsecureCerts: true
+  },
+      {
+          maxInstances: 2,
+          browserName: 'firefox',
+      }
+  ],
     //
     // ===================
     // Test Configurations
@@ -105,8 +106,6 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
-    //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -304,3 +303,4 @@ export const config = {
     // afterAssertion: function(params) {
     // }
 }
+

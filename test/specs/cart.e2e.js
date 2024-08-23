@@ -49,7 +49,7 @@ describe("Cart page testing", () => {
 
     cartPage.navigateToCart();
     const productRemoveBtn = cartPage.productRemoveBtn;
-    const productRemoveBtnText = await cartPage.productRemoveBtn.getText();
+    const productRemoveBtnText = await productRemoveBtn.getText();
     await expect(cartPage.productName).toBeDisplayed();
     await expect(cartPage.productPrice).toBeDisplayed();
     await expect(cartPage.productDesc).toBeDisplayed();

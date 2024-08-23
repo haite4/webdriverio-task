@@ -1,14 +1,13 @@
 {
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js",
-    "wdio:inventory": "wdio run wdio.conf.js --spec test/specs/inventory.e2e.js",
-    "wdio:login": "wdio run wdio.conf.js --spec test/specs/login.e2e.js",
-    "wdio:cart": "wdio run wdio.conf.js --spec test/specs/cart.e2e.js",
-    "wdio:checkout:step:one": "wdio run wdio.conf.js --spec test/specs/checkout-step-one.e2e.js",
+    "wdio": "wdio run configs/wdio.conf.js",
+    "wdio:inventory": "wdio run configs/wdio.conf.js --spec test/specs/inventory.e2e.js",
+    "wdio:login": "wdio run configs/wdio.conf.js --spec test/specs/login.e2e.js",
+    "wdio:cart": "wdio run configs/wdio.conf.js --spec test/specs/cart.e2e.js",
+    "wdio:checkout:step:one": "wdio run configs/wdio.conf.js --spec test/specs/checkout-step-one.e2e.js",
     "allure:generate": "npx allure generate allure-results --clean"
   },
   "name": "webdriverio-task",
-  "type": "module",
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@wdio/allure-reporter": "^9.0.4",

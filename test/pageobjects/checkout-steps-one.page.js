@@ -2,6 +2,7 @@ import endpoints from "../../fixtures/endpoints.json";
 import Page from "./page";
 
 class CheckoutStepOnePage extends Page {
+    
   get title() {
     return $(".title");
   }
