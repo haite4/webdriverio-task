@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "wdio": "wdio run configs/wdio.conf.js",
+    "test": "wdio run configs/wdio.chrome.headless.conf.js",
+    "wdio:all": "wdio run configs/wdio.conf.js",
     "wdio:inventory": "wdio run configs/wdio.conf.js --spec test/specs/inventory.e2e.js",
     "wdio:login": "wdio run configs/wdio.conf.js --spec test/specs/login.e2e.js",
     "wdio:cart": "wdio run configs/wdio.conf.js --spec test/specs/cart.e2e.js",
