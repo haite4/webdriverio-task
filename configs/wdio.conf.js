@@ -1,5 +1,6 @@
 exports.config = {
-    //
+   // tests running inside the container should connect to the same network
+  
     // ====================
     // Runner Configuration
     // ====================
@@ -57,7 +58,8 @@ exports.config = {
       {
           maxInstances: 2,
           browserName: 'firefox',
-      }
+      },
+      
   ],
     //
     // ===================
@@ -101,6 +103,9 @@ exports.config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+
+
+    // services: [],
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance

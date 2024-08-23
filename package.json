@@ -1,11 +1,17 @@
 {
   "scripts": {
-    "test": "wdio run configs/wdio.chrome.headless.conf.js",
-    "wdio:all": "wdio run configs/wdio.conf.js",
-    "wdio:inventory": "wdio run configs/wdio.conf.js --spec test/specs/inventory.e2e.js",
-    "wdio:login": "wdio run configs/wdio.conf.js --spec test/specs/login.e2e.js",
-    "wdio:cart": "wdio run configs/wdio.conf.js --spec test/specs/cart.e2e.js",
-    "wdio:checkout:step:one": "wdio run configs/wdio.conf.js --spec test/specs/checkout-step-one.e2e.js",
+    "test": "cross-env TEST_ENV=default wdio run configs/wdio.chrome.headless.conf.js",
+    "test:all": "cross-env TEST_ENV=default wdio run configs/wdio.conf.js",
+    "test:inventory": "cross-env TEST_ENV=default wdio run configs/wdio.conf.js --spec test/specs/inventory.e2e.js",
+    "test:login": "cross-env TEST_ENV=default wdio run configs/wdio.conf.js --spec test/specs/login.e2e.js",
+    "test:cart": "cross-env TEST_ENV=default wdio run configs/wdio.conf.js --spec test/specs/cart.e2e.js",
+    "test:checkout:step:one": "cross-env TEST_ENV=default wdio run configs/wdio.conf.js --spec test/specs/checkout-step-one.e2e.js",
+    "test:firefox": "cross-env TEST_ENV=default wdio run configs/wdio.firefox.conf.js",
+    "test:firefox:headless": "cross-env TEST_ENV=default wdio run configs/wdio.firefox.headless.conf.js",
+    "test:chrome": "cross-env TEST_ENV=default wdio run configs/wdio.chrome.conf.js",
+    "test:chrome:headless": "cross-env TEST_ENV=default wdio run configs/wdio.chrome.headless.conf.js",
+    "test:edge": "cross-env TEST_ENV=default wdio run configs/wdio.edge.conf.js",
+    "test:edge:headless": "cross-env TEST_ENV=default wdio run configs/wdio.edge.headless.conf.js",
     "allure:generate": "npx allure generate allure-results --clean"
   },
   "name": "webdriverio-task",
@@ -16,6 +22,8 @@
     "@wdio/local-runner": "^9.0.5",
     "@wdio/mocha-framework": "^9.0.5",
     "allure-commandline": "^2.30.0",
-    "chai": "^5.1.1"
+    "chai": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "wdio-docker-service": "^3.2.1"
   }
 }
