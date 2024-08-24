@@ -96,6 +96,6 @@ The GitHub Actions workflow is configured to automatically run the WebdriverIO t
 [View Test Results](https://haite4.github.io/webdriverio-task/)
 
 ### Summary
-- **Test Coverage:**: The project includes 20 test cases that cover essential features of the Login, Inventory, Cart, and Checkout pages.
-- **GitHub Actions Workflow:**: The workflow runs WebdriverIO tests in a headless Chrome browser and generates test reports.
-- **Result Publication:**: Test results are automatically published to GitHub Pages, making them easily accessible online.
+- **Test Coverage:** The project includes 20 test cases that cover essential features of the Login, Inventory, Cart, and Checkout pages.
+- **GitHub Actions Workflow:** The workflow runs WebdriverIO tests in a headless Chrome browser and generates test reports.
+- **Result Publication:** Test results are automatically published to GitHub Pages, making them easily accessible online.
