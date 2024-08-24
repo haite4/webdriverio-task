@@ -12,7 +12,8 @@
     "test:chrome:headless": "cross-env TEST_ENV=default wdio run configs/wdio.chrome.headless.conf.js",
     "test:edge": "cross-env TEST_ENV=default wdio run configs/wdio.edge.conf.js",
     "test:edge:headless": "cross-env TEST_ENV=default wdio run configs/wdio.edge.headless.conf.js",
-    "allure:generate": "npx allure generate allure-results --clean"
+    "allure:generate": "npx allure generate allure-results --clean",
+    "allure:serve": "npx allure serve allure-results"
   },
   "name": "webdriverio-task",
   "devDependencies": {
