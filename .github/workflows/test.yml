@@ -33,3 +33,18 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_branch: gh-pages
             publish_dir: allure-report
+
+
+  docker-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Chekout
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t wdio-test . 
+
+      - name: Run Webdriverio tests in Docker
+        run: |
+          docker run --rm wdio-test
